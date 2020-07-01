@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-
+const passport = require('passport');
 require('dotenv').config({ path: path.join(__dirname, './config/.env') });
 
 const { authRoutes } = require('./routes/index');
@@ -17,6 +17,8 @@ app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(passport.initialize());
+require('./middlewares/passport')(passport);
 
 app.use('/api/auth', authRoutes);
 
