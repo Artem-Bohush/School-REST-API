@@ -3,10 +3,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-
+const passport = require('passport');
 require('dotenv').config({ path: path.join(__dirname, './config/.env') });
 
-const { authRoutes } = require('./routes/index');
+const { authRoutes, lessonRoutes, groupRoutes, teacherRoutes, studentRoutes } = require('./routes/index');
 
 const app = express();
 
@@ -17,8 +17,14 @@ app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(passport.initialize());
+require('./middlewares/passport')(passport);
 
 app.use('/api/auth', authRoutes);
+app.use('/api/lesson', lessonRoutes);
+app.use('/api/teacher', teacherRoutes);
+app.use('/api/group', groupRoutes);
+app.use('/api/student', studentRoutes);
 
 const PORT = process.env.PORT || 5000;
 
