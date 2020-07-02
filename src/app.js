@@ -6,7 +6,7 @@ const cors = require('cors');
 const passport = require('passport');
 require('dotenv').config({ path: path.join(__dirname, './config/.env') });
 
-const { authRoutes } = require('./routes/index');
+const { authRoutes, lessonRoutes, groupRoutes, teacherRoutes, studentRoutes } = require('./routes/index');
 
 const app = express();
 
@@ -21,6 +21,10 @@ app.use(passport.initialize());
 require('./middlewares/passport')(passport);
 
 app.use('/api/auth', authRoutes);
+app.use('/api/lesson', lessonRoutes);
+app.use('/api/teacher', teacherRoutes);
+app.use('/api/group', groupRoutes);
+app.use('/api/student', studentRoutes);
 
 const PORT = process.env.PORT || 5000;
 

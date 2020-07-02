@@ -11,10 +11,10 @@ module.exports = (passport) => {
   passport.use(
     new Strategy(options, async (payload, done) => {
       try {
-        const user = await School.findById(payload.userId).select('email id');
+        const school = await School.findById(payload.schoolId).select('email id');
 
-        if (user) {
-          done(null, user);
+        if (school) {
+          done(null, school);
         } else {
           done(null, false);
         }
