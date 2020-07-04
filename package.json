@@ -1,14 +1,14 @@
 {
   "name": "School_CRUD_API",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/app.js",
   "engines": {
     "node": "12.16.3",
     "npm": "6.14.4"
   },
   "scripts": {
     "dev": "nodemon ./src/app.js",
-    "prod": "node ./src/app.js",
+    "start": "node ./src/app.js",
     "eslint": "eslint src/**/*.js"
   },
   "author": "Artem Bohush <art.bohush@gmail.com>",
