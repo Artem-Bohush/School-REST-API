@@ -12,7 +12,6 @@ module.exports = (passport) => {
     new Strategy(options, async (payload, done) => {
       try {
         const school = await School.findById(payload.schoolId).select('email id');
-
         if (school) {
           done(null, school);
         } else {

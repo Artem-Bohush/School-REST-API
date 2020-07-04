@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const p = require('passport');
-const controller = require('../../controllers/group');
+const controller = require('../../controllers/schedule');
 
 router.get('/', p.authenticate('jwt', { session: false }), controller.getAll);
 router.delete('/:id', p.authenticate('jwt', { session: false }), controller.remove);

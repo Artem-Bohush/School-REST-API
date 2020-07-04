@@ -19,7 +19,7 @@ const lessonSchema = new Schema({
     type: String,
     required: true,
   },
-  order: {
+  lessonNumber: {
     type: Number,
     required: true,
   },

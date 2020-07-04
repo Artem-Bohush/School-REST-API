@@ -1,10 +1,10 @@
-const Group = require('../models/Group');
+const Schedule = require('../models/Schedule');
 const errorHandler = require('../helpers/errorHandler');
 
 module.exports.getAll = async (req, res) => {
   try {
-    const groups = await Group.find({ school: req.user.id });
-    res.status(200).json(groups);
+    const schedules = await Schedule.find({ school: req.user.id });
+    res.status(200).json(schedules);
   } catch (e) {
     errorHandler(res, e);
   }
@@ -12,11 +12,11 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.remove = async (req, res) => {
   try {
-    const result = await Group.deleteOne({ _id: req.params.id });
+    const result = await Schedule.deleteOne({ _id: req.params.id });
     if (result.deletedCount) {
-      res.status(200).json({ success: true, message: 'The group successfully deleted!' });
+      res.status(200).json({ success: true, message: 'The schedule successfully deleted!' });
     } else {
-      res.status(404).json({ success: false, message: 'Such a group was not found in the database!' });
+      res.status(404).json({ success: false, message: 'Such a schedule was not found in the database!' });
     }
   } catch (e) {
     errorHandler(res, e);
@@ -25,11 +25,11 @@ module.exports.remove = async (req, res) => {
 
 module.exports.create = async (req, res) => {
   try {
-    const group = await new Group({
-      name: req.body.name,
+    const schedule = await new Schedule({
+      schedule: req.body.schedule,
       school: req.user.id,
     }).save();
-    res.status(201).json(group);
+    res.status(201).json(schedule);
   } catch (e) {
     errorHandler(res, e);
   }
@@ -37,12 +37,12 @@ module.exports.create = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   try {
-    const updatedGroup = await Group.findOneAndUpdate(
+    const updatedSchedule = await Schedule.findOneAndUpdate(
       { _id: req.params.id },
       { $set: req.body },
       { new: true },
     );
-    res.status(200).json(updatedGroup);
+    res.status(200).json(updatedSchedule);
   } catch (e) {
     errorHandler(res, e);
   }

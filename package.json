@@ -1,14 +1,17 @@
 {
-  "name": "Chatbots.Studio_Internship_CRUD_API",
+  "name": "School_CRUD_API",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.3",
+    "npm": "6.14.4"
+  },
   "scripts": {
     "dev": "nodemon ./src/app.js",
-    "prod": "node ./src/app.js"
+    "prod": "node ./src/app.js",
+    "eslint": "eslint src/**/*.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Artem Bohush <art.bohush@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "eslint": "7.3.1",
