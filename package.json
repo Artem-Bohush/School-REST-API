@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/app.js",
-    "prod": "node ./src/app.js"
+    "prod": "node ./src/app.js",
+    "eslint": "eslint src/**/*.js"
   },
   "keywords": [],
   "author": "",
