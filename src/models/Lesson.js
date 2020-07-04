@@ -19,8 +19,12 @@ const lessonSchema = new Schema({
     type: String,
     required: true,
   },
-  order: {
-    type: Number,
+  timeStart: {
+    type: String,
+    required: true,
+  },
+  timeEnd: {
+    type: String,
     required: true,
   },
   school: {

@@ -16,7 +16,7 @@ module.exports.remove = async (req, res) => {
     if (result.deletedCount) {
       res.status(200).json({ success: true, message: 'The teacher successfully deleted!' });
     } else {
-      res.status(404).json({ success: false, message: 'Such a group was not found in the database!' });
+      res.status(404).json({ success: false, message: 'Such a teacher was not found in the database!' });
     }
   } catch (e) {
     errorHandler(res, e);
