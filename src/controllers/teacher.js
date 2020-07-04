@@ -1,4 +1,5 @@
 const Teacher = require('../models/Teacher');
+const Lesson = require('../models/Lesson');
 const errorHandler = require('../helpers/errorHandler');
 
 module.exports.getAll = async (req, res) => {
@@ -14,6 +15,7 @@ module.exports.remove = async (req, res) => {
   try {
     const result = await Teacher.deleteOne({ _id: req.params.id });
     if (result.deletedCount) {
+      await Lesson.deleteMany({ group: req.params.id });
       res.status(200).json({ success: true, message: 'The teacher successfully deleted!' });
     } else {
       res.status(404).json({ success: false, message: 'Such a teacher was not found in the database!' });
