@@ -5,19 +5,24 @@ const morgan = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
 require('dotenv').config({ path: path.join(__dirname, './config/.env') });
-
-const { authRoutes, lessonRoutes, groupRoutes, teacherRoutes, studentRoutes, scheduleRoutes } = require('./routes/index');
+const {
+  authRoutes,
+  lessonRoutes,
+  groupRoutes,
+  teacherRoutes,
+  studentRoutes,
+  scheduleRoutes,
+} = require('./routes/index');
+require('./db/index')();
 
 const app = express();
-
-require('./db/index')();
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
 app.use(passport.initialize());
+app.use(cors());
 require('./middlewares/passport')(passport);
 
 app.use('/api/auth', authRoutes);

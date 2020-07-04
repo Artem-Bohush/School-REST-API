@@ -54,8 +54,7 @@ module.exports.create = async (req, res) => {
       teacher: req.body.teacher,
       group: req.body.group,
       classroom: req.body.classroom,
-      timeStart: req.body.timeStart,
-      timeEnd: req.body.timeEnd,
+      lessonNumber: req.body.lessonNumber,
       school: req.user.id,
     }).save();
     res.status(201).json(lesson);
