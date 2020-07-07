@@ -16,6 +16,11 @@ const schoolSchema = new Schema({
     type: String,
     required: true,
   },
+  role: {
+    ref: 'roles',
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('schools', schoolSchema);

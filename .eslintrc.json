@@ -15,6 +15,7 @@
         "ecmaVersion": 11
     },
     "rules": {
-        "max-len": "warn"
+        "max-len": "warn",
+        "no-underscore-dangle": "warn"
     }
 }
