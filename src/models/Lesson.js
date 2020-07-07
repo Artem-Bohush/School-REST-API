@@ -10,10 +10,12 @@ const lessonSchema = new Schema({
   teacher: {
     ref: 'teachers',
     type: Schema.Types.ObjectId,
+    required: true,
   },
   group: {
     ref: 'groups',
     type: Schema.Types.ObjectId,
+    required: true,
   },
   classroom: {
     type: String,
@@ -26,6 +28,7 @@ const lessonSchema = new Schema({
   school: {
     ref: 'schools',
     type: Schema.Types.ObjectId,
+    required: true,
   },
 });
 
