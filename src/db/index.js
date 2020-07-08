@@ -9,7 +9,7 @@ module.exports = async () => {
     await mongoose.connect(process.env.MONGODB_URI, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true });
     console.log('MongoDB Atlas successfully connected!');
 
-    const r = await Role.find({});
+    const r = await Role.find();
     if (!r.length) {
       new Role({ name: roles.ADMIN }).save((err, adminRole) => {
         if (err) throw err;

@@ -4,3 +4,4 @@ module.exports.teacherRoutes = require('./teacher/index');
 module.exports.groupRoutes = require('./group/index');
 module.exports.studentRoutes = require('./student/index');
 module.exports.scheduleRoutes = require('./schedule/index');
+module.exports.adminRoutes = require('./admin/index');

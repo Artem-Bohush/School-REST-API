@@ -13,6 +13,7 @@ const {
   teacherRoutes,
   studentRoutes,
   scheduleRoutes,
+  adminRoutes,
 } = require('./routes/index');
 
 const app = express();
@@ -30,6 +31,7 @@ app.use('/api/teacher', teacherRoutes);
 app.use('/api/group', groupRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/schedule', scheduleRoutes);
+app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 
