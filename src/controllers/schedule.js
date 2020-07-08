@@ -3,7 +3,7 @@ const errorHandler = require('../helpers/errorHandler');
 
 module.exports.getAll = async (req, res) => {
   try {
-    const schedules = await Schedule.find({ school: req.user.id });
+    const schedules = await Schedule.find({ school: req.school.id });
     res.status(200).json(schedules);
   } catch (e) {
     errorHandler(res, e);
@@ -27,7 +27,7 @@ module.exports.create = async (req, res) => {
   try {
     const schedule = await new Schedule({
       schedule: req.body.schedule,
-      school: req.user.id,
+      school: req.school.id,
     }).save();
     res.status(201).json(schedule);
   } catch (e) {

@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const p = require('passport');
+const auth = require('../../middlewares/auth');
 const controller = require('../../controllers/lesson');
 
-router.get('/', p.authenticate('jwt', { session: false }), controller.getAll);
-router.get('/teacher/:teacherId', p.authenticate('jwt', { session: false }), controller.getByTeacherId);
-router.get('/group/:groupId', p.authenticate('jwt', { session: false }), controller.getByGroupId);
-router.delete('/:id', p.authenticate('jwt', { session: false }), controller.remove);
-router.post('/', p.authenticate('jwt', { session: false }), controller.create);
-router.patch('/:id', p.authenticate('jwt', { session: false }), controller.update);
+router.get('/', auth, controller.getAll);
+router.get('/teacher/:teacherId', auth, controller.getByTeacherId);
+router.get('/group/:groupId', auth, controller.getByGroupId);
+router.delete('/:id', auth, controller.remove);
+router.post('/', auth, controller.create);
+router.patch('/:id', auth, controller.update);
 
 module.exports = router;

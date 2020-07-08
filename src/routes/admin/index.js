@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const p = require('passport');
+const auth = require('../../middlewares/auth');
 const controller = require('../../controllers/admin');
 
-router.get('/', p.authenticate('jwt', { session: false }), controller.getInfo);
+router.get('/', auth, controller.getInfo);
 
 module.exports = router;
