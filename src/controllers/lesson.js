@@ -3,7 +3,7 @@ const errorHandler = require('../helpers/errorHandler');
 
 module.exports.getAll = async (req, res) => {
   try {
-    const lessons = await Lesson.find({ school: req.user.id });
+    const lessons = await Lesson.find({ school: req.school.id });
     res.status(200).json(lessons);
   } catch (e) {
     errorHandler(res, e);
@@ -13,7 +13,7 @@ module.exports.getAll = async (req, res) => {
 module.exports.getByTeacherId = async (req, res) => {
   try {
     const lessons = await Lesson.find({
-      school: req.user.id,
+      school: req.school.id,
       teacher: req.params.teacherId,
     });
     res.status(200).json(lessons);
@@ -25,7 +25,7 @@ module.exports.getByTeacherId = async (req, res) => {
 module.exports.getByGroupId = async (req, res) => {
   try {
     const lessons = await Lesson.find({
-      school: req.user.id,
+      school: req.school.id,
       group: req.params.groupId,
     });
     res.status(200).json(lessons);
@@ -55,7 +55,7 @@ module.exports.create = async (req, res) => {
       group: req.body.group,
       classroom: req.body.classroom,
       lessonNumber: req.body.lessonNumber,
-      school: req.user.id,
+      school: req.school.id,
     }).save();
     res.status(201).json(lesson);
   } catch (e) {

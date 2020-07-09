@@ -14,6 +14,7 @@ const teacherSchema = new Schema({
   school: {
     ref: 'schools',
     type: Schema.Types.ObjectId,
+    required: true,
   },
 });
 

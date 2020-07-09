@@ -4,7 +4,7 @@ const errorHandler = require('../helpers/errorHandler');
 
 module.exports.getAll = async (req, res) => {
   try {
-    const teachers = await Teacher.find({ school: req.user.id });
+    const teachers = await Teacher.find({ school: req.school.id });
     res.status(200).json(teachers);
   } catch (e) {
     errorHandler(res, e);
@@ -30,7 +30,7 @@ module.exports.create = async (req, res) => {
     const teacher = await new Teacher({
       name: req.body.name,
       surname: req.body.surname,
-      school: req.user.id,
+      school: req.school.id,
     }).save();
     res.status(201).json(teacher);
   } catch (e) {

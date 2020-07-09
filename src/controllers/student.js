@@ -3,7 +3,7 @@ const errorHandler = require('../helpers/errorHandler');
 
 module.exports.getAll = async (req, res) => {
   try {
-    const students = await Student.find({ school: req.user.id });
+    const students = await Student.find({ school: req.school.id });
     res.status(200).json(students);
   } catch (e) {
     errorHandler(res, e);
@@ -13,7 +13,7 @@ module.exports.getAll = async (req, res) => {
 module.exports.getByGroupId = async (req, res) => {
   try {
     const students = await Student.find({
-      school: req.user.id,
+      school: req.school.id,
       group: req.params.groupId,
     });
     res.status(200).json(students);
@@ -41,7 +41,7 @@ module.exports.create = async (req, res) => {
       name: req.body.name,
       surname: req.body.surname,
       group: req.body.group,
-      school: req.user.id,
+      school: req.school.id,
     }).save();
     res.status(201).json(student);
   } catch (e) {

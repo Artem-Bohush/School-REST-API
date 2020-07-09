@@ -14,10 +14,12 @@ const studentSchema = new Schema({
   group: {
     ref: 'groups',
     type: Schema.Types.ObjectId,
+    required: true,
   },
   school: {
     ref: 'schools',
     type: Schema.Types.ObjectId,
+    required: true,
   },
 });
 
