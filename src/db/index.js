@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Role = require('../models/Role');
 const School = require('../models/School');
-const roles = require('../config/roles');
+const roles = require('./roles');
 
 module.exports = async () => {
   try {

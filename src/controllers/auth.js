@@ -8,7 +8,7 @@ const Teacher = require('../models/Teacher');
 const Student = require('../models/Student');
 const Lesson = require('../models/Lesson');
 const Schedule = require('../models/Schedule');
-const roles = require('../config/roles');
+const roles = require('../db/roles');
 const errorHandler = require('../helpers/errorHandler');
 
 module.exports.login = async (req, res) => {
